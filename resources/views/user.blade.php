@@ -29,6 +29,16 @@
             <td>{{ $data->nama }}</td>
             <td>{{ $data->level_id }}</td>
         </tr>
+        {{-- <tr>
+            <th>
+                Jumlah Pengguna
+            </th>
+        </tr>
+        <tr>
+            <td>
+                {{ $data }}
+            </td>
+        </tr> --}}
     </table>
 </body>
 </html>
