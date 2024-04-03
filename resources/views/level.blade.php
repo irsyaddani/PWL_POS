@@ -21,6 +21,8 @@
                 <td>{{ $d->level_nama}}</td>
             </tr>
         @endforeach
+
+        
     </table>
 </body>
 </html>
