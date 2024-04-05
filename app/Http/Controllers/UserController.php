@@ -152,13 +152,13 @@ class UserController extends Controller
         }
         try {
             UserModel::destroy($id);
-
-            return redirect('/user')->with('success', 'Data user berhasil dihapus');
             
+            return redirect('/user')->with('success', 'Data user berhasil dihapus');
         } catch (\Illuminate\Database\QueryException $e) {
             return redirect('/user')->with('error', 'Data user gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
         }
     }
+    
     
     // public function tambah()
     // {
