@@ -45,7 +45,7 @@ class AuthController extends Controller
         if (Auth::attempt($credential)) {
             // kalau berhasil simpan data usernya di variabel $user
             $user = Auth::user();
-
+            
             // cek lagi jika level usernya biasa maka arahkan ke halaman user
             if ($user->level_id == '1') {
                 // dd($user->level_id);
@@ -91,7 +91,7 @@ class AuthController extends Controller
         }
         // kalau berhasil isi level & hash password agar secure
         $request['level_id'] = '2';
-        $request['password'] = Hash::make($request->passwrod);
+        $request['password'] = Hash::make($request->password);
 
         // masukkan semua data pada request ke table user
         UserModel::create($request->all());

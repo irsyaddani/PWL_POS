@@ -118,13 +118,13 @@ public function list(Request $request)
     public function update (Request $request, string $id) {
 
         $request->validate([
-            'kategori_kode' => 'required|string|max:10',
-            'kategori_nama' => 'required|min:1', 
+            'kode' => 'required|string|max:10',
+            'nama' => 'required|min:1', 
         ]);
 
         KategoriModel::find($id)->update([
-            'kategori_kode' => $request->kategori_kode,
-            'kategori_nama' => $request->kategori_nama,
+            'kategori_kode' => $request->kode,
+            'kategori_nama' => $request->nama,
         ]);
     
         return redirect('/kategori')->with('success', 'Data kategori berhasil diubah'); 

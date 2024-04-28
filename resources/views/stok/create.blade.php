@@ -37,7 +37,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <label class="col-1 control-label col-form-label">Tanggal</label>
                 <div class="col-11">
                     <input type="date" class="form-control" id="stok_tanggal" name="stok_tanggal" value="{{ old('stok_tanggal') }}" required>
@@ -45,7 +45,7 @@
                     <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
-            </div>
+            </div> --}}
             <div class="form-group row">
                 <label class="col-1 control-label col-form-label">Jumlah</label>
                 <div class="col-11">

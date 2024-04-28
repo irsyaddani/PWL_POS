@@ -43,8 +43,8 @@ class PenjualanController extends Controller
             ->addColumn('aksi', function ($penjualan) {
                 $btn = '<a href="' . url('/penjualan/' . $penjualan->penjualan_id) . '" class="btn btn-info btn-sm">Detail</a> ';
                 $btn .= '<a href="' . url('/penjualan/' . $penjualan->penjualan_id . '/edit') . '" class="btn btn-warning btn-sm">Edit</a> ';
-                $btn .= '<form class="d-inline-block" method="POST" action="' . url('/penjualan/' . $penjualan->penjualan_id) . '">'
-                    . csrf_field() . method_field('DELETE') .
+                // $btn .= '<form class="d-inline-block" method="POST" action="' . url('/penjualan/' . $penjualan->penjualan_id) . '">'
+                //     . csrf_field() . method_field('DELETE') .
                     '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah Anda yakit menghapus data ini?\');">Hapus</button></form>';
                 return $btn;
             })
@@ -137,6 +137,8 @@ class PenjualanController extends Controller
             'penjualan_tanggal' => 'required|date',
         ]);
 
+        $penjualan_tanggal = date('Y-m-d H:i:s', strtotime($request->penjualan_tanggal));
+
         PenjualanModel::find($id)->update([
             'user_id' => $request->user_id,
             'pembeli' => $request->pembeli, 
@@ -148,17 +150,17 @@ class PenjualanController extends Controller
     }
 
     //menghapus data 
-    public function destroy (string $id) {
-        $check = PenjualanModel::find($id);
-        if (!$check) { //untuk mengecek apakah data  dengan id yang dimaksud ada atau tidak
-            return redirect('/penjualan')->with('error', 'Data penjualan tidak ditemukan');
-        }
-        try {
-            PenjualanModel::destroy($id); //hapus data 
-            return redirect ('/penjualan')->with('success', 'Data penjualan berhasil dihapus');
-        }catch (\Illuminate\Database\QueryException $e) {
-            //jika terjadi error ketika menghapus data, redirect kembali ke halaman dengan membawa pesan error
-            return redirect('/penjualan')->with('error', 'Data penjualan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
-        }
-    }
+    // public function destroy (string $id) {
+    //     $check = PenjualanModel::find($id);
+    //     if (!$check) { //untuk mengecek apakah data  dengan id yang dimaksud ada atau tidak
+    //         return redirect('/penjualan')->with('error', 'Data penjualan tidak ditemukan');
+    //     }
+    //     try {
+    //         PenjualanModel::destroy($id); //hapus data 
+    //         return redirect ('/penjualan')->with('success', 'Data penjualan berhasil dihapus');
+    //     }catch (\Illuminate\Database\QueryException $e) {
+    //         //jika terjadi error ketika menghapus data, redirect kembali ke halaman dengan membawa pesan error
+    //         return redirect('/penjualan')->with('error', 'Data penjualan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
+    //     }
+    // }
 }

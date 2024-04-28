@@ -76,14 +76,14 @@ class StokController extends Controller
     public function store(Request $request) {
         $request->validate([
             'user_id' => 'required|integer',
-            'stok_tanggal' => 'required|date',
+            // 'stok_tanggal' => 'required|date',
             'stok_jumlah' => 'required|integer',
             'barang_id' => 'required|integer|unique:m_barang,barang_nama' 
         ]);
     
         StokModel::create([
             'user_id' => $request->user_id,
-            'stok_tanggal' => $request->stok_tanggal,
+            'stok_tanggal' => now(),
             'stok_jumlah' => $request->stok_jumlah,
             'barang_id' => $request->barang_id
         ]);
@@ -130,15 +130,14 @@ class StokController extends Controller
     public function update (Request $request, string $id) {
         $request->validate([
             'user_id' => 'required|integer',
-            'stok_tanggal' => 'required|date',
-            'stok_jumlah' => 'required|integer',
-            'barang_id' => 'required|integer|unique:m_barang,barang_nama' 
+            'jumlah' => 'required|integer',
+            'barang_id' => 'required|integer' 
         ]);
 
         StokModel::find($id)->update([
             'user_id' => $request->user_id,
-            'stok_tanggal' => $request->stok_tanggal,
-            'stok_jumlah' => $request->stok_jumlah,
+            'stok_tanggal' => now(),
+            'stok_jumlah' => $request->jumlah,
             'barang_id' => $request->barang_id
         ]);
     

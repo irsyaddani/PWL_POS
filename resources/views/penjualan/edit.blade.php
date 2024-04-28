@@ -51,10 +51,19 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-group row">
+                {{-- <div class="form-group row">
                     <label class="col-2 control-label col-form-label">Tanggal Penjualan</label>
                     <div class="col-10">
                         <input type="date" class="form-control" id="penjualan_tanggal" name="penjualan_tanggal" value="{{ old('penjualan_tanggal', $penjualan->penjualan_tanggal) }}" required>
+                        @error('penjualan_tanggal')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div> --}}
+                <div class="form-group row">
+                    <label class="col-2 control-label col-form-label">Tanggal Penjualan</label>
+                    <div class="col-10">
+                        <input type="datetime-local" class="form-control" id="penjualan_tanggal" name="penjualan_tanggal" value="{{ old('penjualan_tanggal', date('Y-m-d\TH:i', strtotime($penjualan->penjualan_tanggal))) }}" required>
                         @error('penjualan_tanggal')
                         <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
