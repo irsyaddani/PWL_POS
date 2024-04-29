@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\BarangController;
+use App\Http\Controllers\Api\KategoriController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\LevelController;
 use Illuminate\Http\Request;
@@ -33,3 +35,15 @@ Route::post('levels', [LevelController::class, 'store']);
 Route::get('levels/{level}', [LevelController::class, 'show']);          
 Route::put('levels/{level}', [LevelController::class, 'update']);        
 Route::delete('levels/{level}', [LevelController::class, 'destroy']);    
+
+Route::get('categories', [KategoriController::class, 'index']);               
+Route::post('categories', [KategoriController::class, 'store']);            
+Route::get('categories/{ketegori}', [KategoriController::class, 'show']);          
+Route::put('categories/{kategori}', [KategoriController::class, 'update']);        
+Route::delete('categories/{kategori}', [KategoriController::class, 'destroy']);    
+
+Route::get('stuffs', [BarangController::class, 'index']);               
+Route::post('stuffs', [BarangController::class, 'store']);            
+Route::get('stuffs/{barang}', [BarangController::class, 'show']);          
+Route::put('stuffs/{barang}', [BarangController::class, 'update']);        
+Route::delete('stuffs/{barang}', [BarangController::class, 'destroy']);    
