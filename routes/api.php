@@ -47,3 +47,8 @@ Route::post('stuffs', [BarangController::class, 'store']);
 Route::get('stuffs/{barang}', [BarangController::class, 'show']);          
 Route::put('stuffs/{barang}', [BarangController::class, 'update']);        
 Route::delete('stuffs/{barang}', [BarangController::class, 'destroy']);    
+
+Route::post('/register1', App\Http\Controllers\Api\RegisterController::class)->name('register1');    
+
+Route::post('/barang1', [App\Http\Controllers\Api\BarangController::class, 'store'])->name('barang1');    
+
