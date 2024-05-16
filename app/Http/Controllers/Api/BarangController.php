@@ -18,7 +18,7 @@ class BarangController extends Controller
         $data["image"] = $request->file('image_brg')->hashName();
         unset($data['image_brg']);
         $barang = BarangModel::create($data);
-        return response()->json($barang, 201);
+        return response()->json($barang, 201); 
     }
     
     public function show(BarangModel $barang) {

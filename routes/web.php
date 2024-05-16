@@ -12,6 +12,7 @@ use App\Http\Controllers\StokController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\FileUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,10 +29,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/level', [LevelController::class, 'index']);
-Route::get('/kategori', [KategoriController::class, 'index']);
-Route::get('/user', [UserController::class, 'index']);
-Route::get('/user', [UserController::class, 'index'])->name('/user');
+// Route::get('/level', [LevelController::class, 'index']);
+// // Route::get('/kategori', [KategoriController::class, 'index']);
+// Route::get('/user', [UserController::class, 'index']);
+// Route::get('/user', [UserController::class, 'index'])->name('/user');
 
 // Route::get('/user/tambah', [UserController::class, 'tambah'])->name('/user/tambah');
 // Route::get('/user/ubah/{id}', [UserController::class, 'ubah'])->name('/user/ubah');
@@ -151,4 +152,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('manager', ManagerController::class);
     });
 });
+
+Route::get('/file-upload', [FileUploadController::class, 'fileUpload']);
+Route::post('/file-upload', [FileUploadController::class, 'prosesFileUpload']);
+
+Route::get('/file-upload-rename', [FileUploadController::class, 'fileUploadRename']);
+Route::post('/file-upload-rename', [FileUploadController::class, 'prosesfileUploadRename']);
 
